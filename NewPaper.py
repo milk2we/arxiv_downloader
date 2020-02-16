@@ -22,6 +22,8 @@ import time
 import re
 from multiprocessing.dummy import Pool
 
+
+
 def getHtml(url):
     content = request.urlopen(url).read()
     return content.decode('utf-8')
@@ -36,39 +38,6 @@ def getContent(content):
 
     return links
 
-
-
-'''
-appKey = '0caaa17749afe877'
-secretKey = 'E8RlvPAy8P3EUPM0sycgTYssKzCvfB9l'
-
-
-def youdaoTranslate(q):
-    httpClient = None
-    myurl = '/api'
-    fromLang = 'EN'
-    toLang = 'zh-CHS'
-    salt = random.randint(1, 65536)
-    sign = appKey + q + str(salt) + secretKey
-    m1 = hashlib.new('md5')
-    m1.update(sign.encode("utf-8"))
-    sign = m1.hexdigest()
-    myurl = myurl + '?appKey=' + appKey + '&q=' + urllib.parse.quote(
-        q) + '&from=' + fromLang + '&to=' + toLang + '&salt=' + str(salt) + '&sign=' + sign
-    try:
-        httpClient = http.client.HTTPConnection('openapi.youdao.com')
-        httpClient.request('GET', myurl)
-        # response是HTTPResponse对象
-        response = httpClient.getresponse()
-        s = eval(response.read().decode("utf-8"))['translation']
-        #print(s)
-    except Exception as e:
-        print(e)
-    finally:
-        if httpClient:
-            httpClient.close()
-    return s
-'''
 
 
 appid = '20200216000384575'  # 填写你的appid
@@ -189,3 +158,12 @@ if __name__ == '__main__':
 
     process_html(base_url,keyword[1])
 
+
+'''
+待完善功能:
+1、自动发微博功能
+2、判断是否投顶会
+3、关键词判断
+4、邮件功能
+5、微信小程序功能
+'''
